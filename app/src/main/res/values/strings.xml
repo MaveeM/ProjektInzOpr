@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dice Roll</string>
+    <string name="roll">Rzuć kostką</string>
+    <string name="jak_gra">Jak grać?</string>
+    <string name="wpisz_liczb">Wpisz Liczbę</string>
+    <string name="pokonaj_bossa_ktory_ma_8_hp">W pierwszym ruchu rzuć kostką, aby zadać obrażenia przeciwnikowi. Przeciwnik ma 8 punktów życia.
+        Jeśli nie uda Ci się pokonać przeciwnika, to on spróbuje pokonać Cię w swoim ruchu.</string>
+</resources>

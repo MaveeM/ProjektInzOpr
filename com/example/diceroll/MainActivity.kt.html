@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #808080;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">//import bibliotek itp.</span>
+
+<span class="s2">package </span><span class="s0">com.example.diceroll</span>
+
+<span class="s0">import androidx.appcompat.app.AppCompatActivity</span>
+<span class="s0">import android.os.Bundle</span>
+<span class="s0">import android.view.View</span>
+<span class="s0">import android.widget.Button</span>
+<span class="s0">import android.widget.ImageView</span>
+<span class="s0">import android.widget.TextView</span>
+<span class="s0">import android.widget.Toast</span>
+<span class="s0">import org.jetbrains.annotations.NotNull</span>
+
+<span class="s1">//klasa main (czyli to, co wykonuje program z pomocą activity_main.xml)</span>
+
+<span class="s2">class </span><span class="s0">MainActivity : AppCompatActivity() {</span>
+    <span class="s0">override </span><span class="s2">fun </span><span class="s0">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s2">super</span><span class="s0">.onCreate(savedInstanceState)</span>
+        <span class="s0">setContentView(R.layout.activity_main)</span>
+
+        <span class="s1">//opis działania buttona - button wykonuje funkcję rzutu kostką</span>
+
+        <span class="s2">val </span><span class="s0">rollButton: Button = findViewById(R.id.button)</span>
+        <span class="s0">rollButton.setOnClickListener {</span>
+            <span class="s0">rollButton.setOnClickListener {</span>
+                <span class="s0">rollDice()</span>
+            <span class="s0">}</span>
+        <span class="s0">}</span>
+
+    <span class="s0">}</span>
+
+<span class="s1">//funkcja rzutu kostkami</span>
+
+    <span class="s0">private </span><span class="s2">fun </span><span class="s0">rollDice() {</span>
+        <span class="s2">val </span><span class="s0">dice = Dice(</span><span class="s3">6</span><span class="s0">)</span>
+        <span class="s2">val </span><span class="s0">diceRoll = dice.roll()</span>
+
+        <span class="s2">val </span><span class="s0">dice2 = Dice.Dice2(</span><span class="s3">6</span><span class="s0">)</span>
+        <span class="s2">val </span><span class="s0">diceRoll2 = dice.roll()</span>
+
+        <span class="s2">val </span><span class="s0">dice3 = Dice.Dice3(</span><span class="s3">6</span><span class="s0">)</span>
+        <span class="s2">val </span><span class="s0">diceRoll3 = dice.roll()</span>
+
+        <span class="s2">val </span><span class="s0">dice4 = Dice.Dice4(</span><span class="s3">6</span><span class="s0">)</span>
+        <span class="s2">val </span><span class="s0">diceRoll4 = dice.roll()</span>
+
+        <span class="s2">val </span><span class="s0">sumOfDiceRoll = diceRoll + diceRoll2</span>
+
+        <span class="s1">//główna gra</span>
+
+        <span class="s2">fun </span><span class="s0">fight() {</span>
+
+<span class="s1">//to sa wlasnosci przeciwnika</span>
+
+            <span class="s2">val </span><span class="s0">healthBossa = </span><span class="s3">8</span>
+            <span class="s2">val </span><span class="s0">healthLeft = healthBossa - sumOfDiceRoll </span><span class="s1">//odejmujemy sume wyrzuconych oczek od zadanego zycia przeciwnika</span>
+            <span class="s1">//tu mamy ifa ktory wyswietla prawidlowa wartosc na kostkach (gornych - usera) w zaleznosci od wyrzuconych oczek</span>
+            <span class="s2">val </span><span class="s0">diceImage: ImageView = findViewById(R.id.imageView)</span>
+            <span class="s2">when </span><span class="s0">(diceRoll) {</span>
+                <span class="s3">1 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_1)</span>
+                <span class="s3">2 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_2)</span>
+                <span class="s3">3 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_3)</span>
+                <span class="s3">4 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_4)</span>
+                <span class="s3">5 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_5)</span>
+                <span class="s3">6 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_6)</span>
+            <span class="s0">}</span>
+            <span class="s2">val </span><span class="s0">diceImage2: ImageView = findViewById(R.id.imageView4)</span>
+            <span class="s2">when </span><span class="s0">(diceRoll2) {</span>
+                <span class="s3">1 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_1)</span>
+                <span class="s3">2 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_2)</span>
+                <span class="s3">3 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_3)</span>
+                <span class="s3">4 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_4)</span>
+                <span class="s3">5 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_5)</span>
+                <span class="s3">6 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_6)</span>
+            <span class="s0">}</span>
+
+            <span class="s1">//jesli przeciwnikowi zostalo mniej lub rowne 0 punktow zycia, to display toast, czyli komunikat ze wygrales</span>
+
+            <span class="s2">if </span><span class="s0">(healthLeft &lt;= </span><span class="s3">0</span><span class="s0">) {</span>
+                <span class="s2">val </span><span class="s0">toast = Toast.makeText(</span><span class="s2">this, </span><span class="s4">&quot;Udało Ci sie pokonać przeciwnika&quot;</span><span class="s2">, </span><span class="s0">Toast.LENGTH_SHORT)</span>
+                <span class="s0">toast.show()</span>
+                <span class="s2">val </span><span class="s0">resultImageViewWin: ImageView = findViewById(R.id.imageView5)</span>
+                <span class="s0">resultImageViewWin.setImageResource(R.drawable.tick_green)</span>
+                <span class="s0">resultImageViewWin.visibility = View.VISIBLE </span><span class="s1">//tu powinien sie wyswietlac tick, ze wygrales, ale sie wyswietla caly czas, jakies zdupcone, naprawie potem</span>
+
+            <span class="s1">//jesli nie pokonales przeciwnika, czyli zostalo mu wiecej niz 0 hp, to dysplayujemy że nie pokonałeś + wykonujemy jego ruch</span>
+
+            <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+                <span class="s2">val </span><span class="s0">resultImageViewLost: ImageView = findViewById(R.id.imageView6)</span>
+                <span class="s0">resultImageViewLost.setImageResource(R.drawable.cross_red)</span>
+                <span class="s0">resultImageViewLost.visibility = View.VISIBLE </span><span class="s1">//to powinno wyswietlac krzyżyk, ale też samfing is not yes</span>
+                <span class="s2">val </span><span class="s0">toast = Toast.makeText(</span><span class="s2">this, </span><span class="s4">&quot;Nie pokonałeś przeciwnika, teraz on spróbuje Cię pokonać&quot;</span><span class="s2">, </span><span class="s0">Toast.LENGTH_SHORT)</span>
+                <span class="s0">toast.show()</span>
+
+
+                <span class="s1">//tu mamy ruch przeciwnika</span>
+
+                <span class="s2">val </span><span class="s0">sumOfDiceRollBossa = diceRoll3 + diceRoll4</span>
+                <span class="s2">val </span><span class="s0">healthUsera = </span><span class="s3">8</span>
+                <span class="s2">val </span><span class="s0">healthLeftUsera = healthUsera - sumOfDiceRollBossa</span>
+
+                <span class="s2">if </span><span class="s0">(healthLeftUsera &lt;= </span><span class="s3">0</span><span class="s0">) {</span>
+                    <span class="s2">val </span><span class="s0">toast = Toast.makeText(</span><span class="s2">this, </span><span class="s4">&quot;Zostałeś pokonany&quot;</span><span class="s2">, </span><span class="s0">Toast.LENGTH_SHORT)</span>
+                    <span class="s0">toast.show()</span>
+                <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+                    <span class="s2">val </span><span class="s0">toast = Toast.makeText(</span><span class="s2">this, </span><span class="s4">&quot;Przeżyłeś walkę&quot;</span><span class="s2">, </span><span class="s0">Toast.LENGTH_SHORT)</span>
+                    <span class="s0">toast.show()</span>
+                <span class="s0">}</span>
+
+                <span class="s1">//tu jest to samo, co z kostkami usera, tylko rollujemy te na dole</span>
+
+                <span class="s2">val </span><span class="s0">diceImage: ImageView = findViewById(R.id.imageView2)</span>
+                <span class="s2">when </span><span class="s0">(diceRoll3) {</span>
+                    <span class="s3">1 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_1_boss)</span>
+                    <span class="s3">2 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_2_boss)</span>
+                    <span class="s3">3 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_3_boss)</span>
+                    <span class="s3">4 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_4_boss)</span>
+                    <span class="s3">5 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_5_boss)</span>
+                    <span class="s3">6 </span><span class="s0">-&gt; diceImage.setImageResource(R.drawable.dice_6_boss)</span>
+                <span class="s0">}</span>
+                <span class="s2">val </span><span class="s0">diceImage2: ImageView = findViewById(R.id.imageView3)</span>
+                <span class="s2">when </span><span class="s0">(diceRoll4) {</span>
+                    <span class="s3">1 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_1_boss)</span>
+                    <span class="s3">2 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_2_boss)</span>
+                    <span class="s3">3 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_3_boss)</span>
+                    <span class="s3">4 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_4_boss)</span>
+                    <span class="s3">5 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_5_boss)</span>
+                    <span class="s3">6 </span><span class="s0">-&gt; diceImage2.setImageResource(R.drawable.dice_6_boss)</span>
+                <span class="s0">}</span>
+            <span class="s0">}</span>
+
+            <span class="s1">//to zlejcie, jest mi potrzebne w konsoli</span>
+            <span class="s0">println(healthLeft)</span>
+        <span class="s0">}</span>
+        <span class="s0">println(fight())</span>
+
+
+    <span class="s0">}</span>
+
+    <span class="s1">// tu mamy nasze kostki w klasach z funkcją rzutu</span>
+
+    <span class="s2">class </span><span class="s0">Dice(private </span><span class="s2">val </span><span class="s0">numSides: Int) {</span>
+
+        <span class="s2">fun </span><span class="s0">roll(): Int {</span>
+            <span class="s2">return </span><span class="s0">(</span><span class="s3">1</span><span class="s0">..numSides).random()</span>
+
+        <span class="s0">}</span>
+
+
+        <span class="s2">class </span><span class="s0">Dice2(private </span><span class="s2">val </span><span class="s0">numSides: Int) {</span>
+
+            <span class="s2">fun </span><span class="s0">roll(): Int {</span>
+                <span class="s2">return </span><span class="s0">(</span><span class="s3">1</span><span class="s0">..numSides).random()</span>
+
+            <span class="s0">}</span>
+        <span class="s0">}</span>
+
+        <span class="s2">class </span><span class="s0">Dice3(private </span><span class="s2">val </span><span class="s0">numSides: Int) {</span>
+
+            <span class="s2">fun </span><span class="s0">roll(): Int {</span>
+                <span class="s2">return </span><span class="s0">(</span><span class="s3">1</span><span class="s0">..numSides).random()</span>
+
+            <span class="s0">}</span>
+        <span class="s0">}</span>
+        <span class="s2">class </span><span class="s0">Dice4(private </span><span class="s2">val </span><span class="s0">numSides: Int) {</span>
+
+            <span class="s2">fun </span><span class="s0">roll(): Int {</span>
+                <span class="s2">return </span><span class="s0">(</span><span class="s3">1</span><span class="s0">..numSides).random()</span>
+
+            <span class="s0">}</span>
+        <span class="s0">}</span>
+    <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>
