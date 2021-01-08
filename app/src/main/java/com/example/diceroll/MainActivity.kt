@@ -5,12 +5,17 @@ package com.example.diceroll
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.example.diceroll.R
 import org.jetbrains.annotations.NotNull
+import java.util.*
+import kotlin.concurrent.schedule
 
 //klasa main (czyli to, co wykonuje program z pomocą activity_main.xml)
 
@@ -80,17 +85,12 @@ class MainActivity : AppCompatActivity() {
             if (healthLeft <= 0) {
                 val toast = Toast.makeText(this, "Udało Ci sie pokonać przeciwnika", Toast.LENGTH_SHORT)
                 toast.show()
-                val resultImageViewWin: ImageView = findViewById(R.id.imageView5)
-                resultImageViewWin.setImageResource(R.drawable.tick_green)
-                resultImageViewWin.visibility = View.VISIBLE //tu powinien sie wyswietlac tick, ze wygrales, ale sie wyswietla caly czas, jakies zdupcone, naprawie potem
 
             //jesli nie pokonales przeciwnika, czyli zostalo mu wiecej niz 0 hp, to dysplayujemy że nie pokonałeś + wykonujemy jego ruch
 
             } else {
-                val resultImageViewLost: ImageView = findViewById(R.id.imageView6)
-                resultImageViewLost.setImageResource(R.drawable.cross_red)
-                resultImageViewLost.visibility = View.VISIBLE //to powinno wyswietlac krzyżyk, ale też samfing is not yes
-                val toast = Toast.makeText(this, "Nie pokonałeś przeciwnika, teraz on spróbuje Cię pokonać", Toast.LENGTH_SHORT)
+
+                val toast = Toast.makeText(this, "Nie pokonałeś przeciwnika, zostało mu $healthLeft punktów życia, teraz on spróbuje Cię pokonać", Toast.LENGTH_SHORT)
                 toast.show()
 
 
@@ -100,15 +100,22 @@ class MainActivity : AppCompatActivity() {
                 val healthUsera = 8
                 val healthLeftUsera = healthUsera - sumOfDiceRollBossa
 
+
                 if (healthLeftUsera <= 0) {
+                    Handler(Looper.getMainLooper()).postDelayed({
                     val toast = Toast.makeText(this, "Zostałeś pokonany", Toast.LENGTH_SHORT)
                     toast.show()
+                    }, 5500)
                 } else {
-                    val toast = Toast.makeText(this, "Przeżyłeś walkę", Toast.LENGTH_SHORT)
+
+
+                    val toast = Toast.makeText(this, "Przeżyłeś walkę, zostało Ci $healthLeftUsera punktów życia", Toast.LENGTH_SHORT)
                     toast.show()
                 }
 
                 //tu jest to samo, co z kostkami usera, tylko rollujemy te na dole
+
+                Handler(Looper.getMainLooper()).postDelayed({
 
                 val diceImage: ImageView = findViewById(R.id.imageView2)
                 when (diceRoll3) {
@@ -128,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                     5 -> diceImage2.setImageResource(R.drawable.dice_5_boss)
                     6 -> diceImage2.setImageResource(R.drawable.dice_6_boss)
                 }
+                }, 5000)
             }
 
             //to zlejcie, jest mi potrzebne w konsoli
@@ -137,6 +145,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     // tu mamy nasze kostki w klasach z funkcją rzutu
 
