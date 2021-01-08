@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
             } else {
 
-                val toast = Toast.makeText(this, "Nie pokonałeś przeciwnika, zostało mu $healthLeft punktów życia, teraz on spróbuje Cię pokonać", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(this, "Nie pokonałeś przeciwnika, zostało mu $healthLeft HP, teraz on spróbuje Cię pokonać", Toast.LENGTH_SHORT)
                 toast.show()
 
                 //tu mamy ruch przeciwnika
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                     }, 5000)
                 } else {
                     Handler(Looper.getMainLooper()).postDelayed({
-                    val toast = Toast.makeText(this, "Przeżyłeś walkę, zostało Ci $healthLeftUsera punktów życia", Toast.LENGTH_SHORT)
+                    val toast = Toast.makeText(this, "Przeżyłeś walkę, zostało Ci $healthLeftUsera HP", Toast.LENGTH_SHORT)
                     toast.show()
                     }, 5000)
                 }

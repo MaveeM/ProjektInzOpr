@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">Dice Roll</string>
-    <string name="roll">Rzuć kostką</string>
-    <string name="jak_gra">Jak grać?</string>
+    <string name="roll">Rzuć kostkami</string>
+    <string name="jak_gra">WALKA NA KOśCi</string>
     <string name="wpisz_liczb">Wpisz Liczbę</string>
-    <string name="pokonaj_bossa_ktory_ma_8_hp">W pierwszym ruchu rzuć kostką, aby zadać obrażenia przeciwnikowi. Przeciwnik ma 8 punktów życia.
-        Jeśli nie uda Ci się pokonać przeciwnika, to on spróbuje pokonać Cię w swoim ruchu.</string>
+    <string name="pokonaj_bossa_ktory_ma_8_hp">
+Każdy gracz (użytkownik, czyli Ty, oraz przeciwnik – Boss) ma dwie kostki i 8 żyć (tzw. HealthPoint, w skrócie HP).
+
+</string>
     <string name="kostki_przeciwnika">Kostki przeciwnika</string>
+    <string name="instrukcja">Instrukcja:
+    W każdej kolejce zarówno Ty, jak i Twój przeciwnik, macie do dyspozycji jeden rzut dwiema kostkami.
+        Suma wyrzuconych oczek jest liczbą żyć (HP) odbieraną przeciwnikowi. Gra polega na pokonaniu przeciwnika.
+        Jeśli wyrzucisz sumę oczek wyższą bądź równą ośmiu – wygrywasz. Jeśli suma oczek będzie niższa od ośmiu, następuje rzut przeciwnika, który spróbuje Cię pokonać.</string>
+    <string name="powodzenia">Powodzenia!</string>
+
 </resources>
