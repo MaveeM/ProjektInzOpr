@@ -35,7 +35,8 @@ class Dice(private val numSides: Int) {
         return (1..numSides).random()
     }
 }
-    //funkcja rzutu kostkami
+    //funkcja rzutu kostkami all
+
 
     private fun rollDice() {
         val dice = Dice(6)
